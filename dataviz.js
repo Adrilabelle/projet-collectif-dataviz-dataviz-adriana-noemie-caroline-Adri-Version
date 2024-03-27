@@ -1,5 +1,5 @@
 // fetch= initie une promesse : appelle l'api 
-fetch("https://hubeau.eaufrance.fr/api/v1/niveaux_nappes/chroniques?code_bss=04502X0043/SGB7&date_debut_mesure=2014-01-20&date_fin_mesure=2024-01-20&size=20000")
+fetch("https://hubeau.eaufrance.fr/api/v1/niveaux_nappes/chroniques?code_bss=09405X0229/S3&date_debut_mesure=2014-01-20&date_fin_mesure=2024-01-20&size=20000")
 
 // .then = quand reponse de fetch (dc de l'API): retourner l'argument en .json
 .then(response => { 
@@ -9,33 +9,24 @@ fetch("https://hubeau.eaufrance.fr/api/v1/niveaux_nappes/chroniques?code_bss=045
 
 // aussi quand reponse fetch: executer la boucle for of (= pour chaque ligne de mesures.data, faire ces instructions)
 .then((mesures)=>{
-    console.log(mesures.data)
-    for (const m of mesures.data){  // type m = object -- type mesures.data = array
-    }
+  console.log(mesures)
     const jaugeMax= mesures.data[0].profondeur_nappe +mesures.data[0].niveau_nappe_eau
-    console.log(jaugeMax)
-    
-    
-    const firstYear = mesures.data[0].date_mesure
     const firstYearLevel = mesures.data[0].niveau_nappe_eau
-
-    const secondYear = mesures.data[mesures.data.length-1].date_mesure
     const secondYearLevel = mesures.data[mesures.data.length-1].niveau_nappe_eau
-
-            
-    console.log(mesures.data[0].date_mesure)    // affiche premiere ligne de l'array mesures.data    
-    console.log(mesures.data[mesures.data.length-1].niveau_nappe_eau)    // affiche derniere ligne de l'array mesures.data
+      
     creerJauge(firstYearLevel,jaugeMax);
     creerJauge(secondYearLevel,jaugeMax);
-    
-    let array=[firstYearLevel, secondYearLevel]
+        
+});
 
-    
-})
+
+
+
+
 
 function pourcentage(niveau, jaugeMax){  //recupere proportion de remplissage de l'eau sur la profondeur totale de la nappe
   
-  return Math.floor((niveau/jaugeMax)*100) // calcule taux de remplissage en eau de la nappe pour chaque ligne (indice) de array
+  return Math.floor((niveau/jaugeMax)*100) // calcule taux de remplissage en eau de la nappe MEETmm
   
 }
 
