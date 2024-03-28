@@ -21,15 +21,11 @@ fetch("https://hubeau.eaufrance.fr/api/v1/niveaux_nappes/chroniques?code_bss=094
 
 
 
-
-
-
 function pourcentage(niveau, jaugeMax){  //recupere proportion de remplissage de l'eau sur la profondeur totale de la nappe
   
   return Math.floor((niveau/jaugeMax)*100) // calcule taux de remplissage en eau de la nappe MEETmm
   
 }
-
 
 function creerJauge(niveau,jaugeMax){ // parametre = taux de remplissage à appeler de la fonction pourcentage()
   
@@ -47,3 +43,37 @@ function creerJauge(niveau,jaugeMax){ // parametre = taux de remplissage à appe
   a.appendChild(span) // ajoute balise span dans balise a
   jauges.appendChild(a) // ajoute balise a dans balise jauges
 }
+// Wrap every letter in a span
+var textWrapper = document.querySelector('.ml1 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml1 .letter',
+    scale: [0.3,1],
+    opacity: [0,1],
+    translateZ: 0,
+    easing: "easeOutExpo",
+    duration: 1000,
+    
+  }).add({
+    targets: '.ml1 .line',
+    scaleX: [0,1],
+    opacity: [0.5,1],
+    easing: "easeOutExpo",
+    duration: 1000,
+    offset: '-=875',
+    
+  }).add({
+    targets: '.ml1',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+   
+   loopComplete: function(anim) {
+    loopCompleted++;
+    completeLogEl.value = 'loop completed : ' + loopCompleted;
+    }
+   
+  });
+  
