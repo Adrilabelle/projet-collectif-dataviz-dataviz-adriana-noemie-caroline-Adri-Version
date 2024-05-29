@@ -1,7 +1,6 @@
 body{
     background-color: hwb(15 47% 5% / 0.929);
     color: #C2E6FF;
-
 }
 
 
@@ -74,8 +73,7 @@ body{
     0 2px 2px rgba(0,0,0,0.12), 
     0 4px 4px rgba(0,0,0,0.12), 
     0 8px 8px rgba(0,0,0,0.12),
-    0 16px 16px rgba(0,0,0,0.12);
-    
+    0 16px 16px rgba(0,0,0,0.12);   
 }
 
 /* Remplissage de bas en haut */
@@ -96,7 +94,6 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-
 }
 
 
@@ -120,8 +117,6 @@ body{
    margin-left: 550px;
    margin-top: 70px;
    width:30%;
-
- 
 }
 
 .ml1 {

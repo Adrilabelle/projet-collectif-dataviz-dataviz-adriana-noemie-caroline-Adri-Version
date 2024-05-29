@@ -23,27 +23,27 @@ fetch("https://hubeau.eaufrance.fr/api/v1/niveaux_nappes/chroniques?code_bss=094
 
 function pourcentage(niveau, jaugeMax){  //recupere proportion de remplissage de l'eau sur la profondeur totale de la nappe
   
-  return Math.floor((niveau/jaugeMax)*100) // calcule taux de remplissage en eau de la nappe MEETmm
+  return Math.floor((niveau/jaugeMax)*100) // calcule taux de remplissage en eau de la nappe 
   
 }
 
 function creerJauge(niveau,jaugeMax){ // parametre = taux de remplissage à appeler de la fonction pourcentage()
   
   const jauges = document.getElementById('jauges')    // pour se placer dans l'id "jauges" dans HTML
-  const a = document.createElement("a")   // creer balise a
+  const eau = document.createElement("eau")   // creer balise eau
   const span= document.createElement("span"); // cree balise span
   const niveauxEau=pourcentage(niveau,jaugeMax) //resultat fonction pourcentage()
   
-  a.setAttribute('class', 'jauge'); // ajoute attribut class avec valeur jauge ds balise a
-  a.setAttribute('href', '#') // ajoute attribut href avec valeur # ds balise a
+  eau.setAttribute('class', 'jauge'); // ajoute attribut class avec valeur jauge ds balise a
+  eau.setAttribute('href', '#') // ajoute attribut href avec valeur # ds balise a
 
   span.setAttribute('class', 'jauge-remplissage'); //idem methode a
   span.setAttribute('style', 'height: '+niveauxEau+'%');
   
-  a.appendChild(span) // ajoute balise span dans balise a
-  jauges.appendChild(a) // ajoute balise a dans balise jauges
+  eau.appendChild(span) // ajoute balise span dans balise eau
+  jauges.appendChild(eau) // ajoute balise a dans balise jauges
 }
-// Wrap every letter in a span
+// enveloppe chaque lettre dans un spam
 var textWrapper = document.querySelector('.ml1 .letters');
 textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
@@ -54,7 +54,7 @@ anime.timeline({loop: true})
     opacity: [0,1],
     translateZ: 0,
     easing: "easeOutExpo",
-    duration: 1000,
+    duration: 3000,
     
   }).add({
     targets: '.ml1 .line',
@@ -67,7 +67,7 @@ anime.timeline({loop: true})
   }).add({
     targets: '.ml1',
     opacity: 0,
-    duration: 1000,
+    duration: 8000,
     easing: "easeOutExpo",
    
    loopComplete: function(anim) {
